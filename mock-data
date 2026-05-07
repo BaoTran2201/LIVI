@@ -1,0 +1,310 @@
+[
+  {
+    id: 1,
+    category: "Giấy tissues",
+    factory: "LARIS",
+    productCode: "69700357",
+    nameEn: "Livi JRT 250m 2 ply",
+    nameVi: "Giấy vệ sinh Livi cuộn lớn 250m 2 lớp",
+    image: "./images/products/livi-jrt-250m.webp",
+    size: "0.8 x 22.5 cm",
+    gsm: "14.3 (±1) g/m²",
+    origin: "Thái Lan",
+    unit: "Cuộn",
+    packing: "12 lốc/thùng",
+    shelfLife: "5 năm",
+    price: 33205,
+    usp: [
+      "100% bột giấy nguyên sinh",
+      "PEFC Certified",
+      "OBA Free",
+      "Mềm mại",
+      "Tan nhanh trong nước"
+    ]
+  },
+
+  {
+    id: 2,
+    category: "Giấy tissues",
+    factory: "LARIS",
+    productCode: "69700117",
+    nameEn: "Livi L-Fold 250's 2 PLY",
+    nameVi: "Khăn giấy lau tay Livi L-Fold 250 tờ 2 lớp",
+    image: "./images/products/livi-lfold-250.webp",
+    size: "24x21 cm",
+    gsm: "20 (±1) g/m²",
+    origin: "Thái Lan",
+    unit: "Gói",
+    packing: "24 gói/thùng",
+    shelfLife: "5 năm",
+    price: 34000,
+    usp: [
+      "100% bột giấy nguyên sinh",
+      "PEFC Certified",
+      "OBA Free",
+      "Thấm hút nhanh",
+      "Không bụi"
+    ]
+  },
+
+  {
+    id: 3,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69920359",
+    nameEn: "Livi JRT 170s 2ply",
+    nameVi: "Giấy vệ sinh Livi 24 cuộn 2 lớp",
+    image: "./images/products/livi-jrt-24-rolls.webp",
+    size: "10.7x10 cm",
+    gsm: "14.3 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Lốc",
+    packing: "6 lốc/thùng",
+    shelfLife: "5 năm",
+    price: 83160,
+    usp: [
+      "100% bột giấy nguyên sinh",
+      "OBA Free",
+      "Mềm mại",
+      "Tan nhanh trong nước"
+    ]
+  },
+
+  {
+    id: 4,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69920066",
+    nameEn: "Livi Luncheon Brown Napkin 500's",
+    nameVi: "Khăn ăn Livi Luncheon 500 tờ 1 lớp (Màu nâu)",
+    image: "./images/products/livi-luncheon-brown.webp",
+    size: "33x33 cm",
+    gsm: "17 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Gói",
+    packing: "12 gói/thùng",
+    shelfLife: "5 năm",
+    price: 65000,
+    usp: [
+      "Giấy màu nâu tự nhiên",
+      "PEFC Certified",
+      "Dai",
+      "Thấm hút nhanh"
+    ]
+  },
+
+  {
+    id: 5,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69920132",
+    nameEn: "Livi Luncheon White Napkin 500's",
+    nameVi: "Khăn ăn Livi Luncheon 500 tờ 1 lớp (Màu trắng)",
+    image: "./images/products/livi-luncheon-white.webp",
+    size: "33x33 cm",
+    gsm: "16 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Gói",
+    packing: "12 gói/thùng",
+    shelfLife: "5 năm",
+    price: 65000,
+    usp: [
+      "100% bột giấy nguyên sinh",
+      "OBA Free",
+      "Mềm mại",
+      "Thấm hút tốt"
+    ]
+  },
+
+  {
+    id: 6,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69918722",
+    nameEn: "Lfold 1/2 Fold 300's",
+    nameVi: "Khăn giấy lau tay Livi L-Fold gấp 1/2 300 tờ 1 lớp",
+    image: "./images/products/livi-lfold-half.webp",
+    size: "21x22 cm",
+    gsm: "34.1 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Gói",
+    packing: "24 gói/thùng",
+    shelfLife: "5 năm",
+    price: 32000,
+    usp: [
+      "Thấm hút tốt",
+      "Không bụi",
+      "Phù hợp toilet"
+    ]
+  },
+
+  {
+    id: 7,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69911241",
+    nameEn: "Luncheon Napkin 100's Full Emboss",
+    nameVi: "Khăn ăn Livi Luncheon 100 tờ 1 lớp",
+    image: "./images/products/livi-luncheon-100.webp",
+    size: "33x30 cm",
+    gsm: "18 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Gói",
+    packing: "30 gói/thùng",
+    shelfLife: "5 năm",
+    price: 15218,
+    usp: [
+      "Full emboss",
+      "Mềm mại",
+      "Thấm hút tốt"
+    ]
+  },
+
+  {
+    id: 8,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69911035",
+    nameEn: "Cocktail Napkin 100's 2ply",
+    nameVi: "Khăn ăn Livi EVO Cocktail 100 tờ 2 lớp",
+    image: "./images/products/livi-cocktail-napkin.webp",
+    size: "22.5x23 cm",
+    gsm: "15 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Gói",
+    packing: "60 gói/thùng",
+    shelfLife: "5 năm",
+    price: 10600,
+    usp: [
+      "Border emboss",
+      "Thiết kế sang trọng",
+      "Dùng cho cafe/bar"
+    ]
+  },
+
+  {
+    id: 9,
+    category: "Giấy tissues",
+    factory: "TUE",
+    productCode: "69911032",
+    nameEn: "Dinner Napkin 50's 2ply",
+    nameVi: "Khăn ăn Livi EVO Dinner 50 tờ 2 lớp",
+    image: "./images/products/livi-dinner-napkin.webp",
+    size: "41.5x40 cm",
+    gsm: "13.7 (±1) g/m²",
+    origin: "Indonesia",
+    unit: "Gói",
+    packing: "48 gói/thùng",
+    shelfLife: "5 năm",
+    price: 17000,
+    usp: [
+      "Kích thước lớn",
+      "2 lớp cao cấp",
+      "Phù hợp nhà hàng"
+    ]
+  },
+
+  {
+    id: 10,
+    category: "Tẩy rửa",
+    factory: "VN",
+    productCode: "SP000456",
+    nameVi: "Nước rửa tay Seifa 4.5L",
+    image: "./images/products/seifa-4-5l.webp",
+    origin: "Việt Nam",
+    unit: "Can",
+    packing: "1 can",
+    shelfLife: "24 tháng",
+    price: 158400,
+    usp: [
+      "Diệt khuẩn",
+      "Khử mùi",
+      "Có dưỡng ẩm"
+    ]
+  },
+
+  {
+    id: 11,
+    category: "Túi rác",
+    factory: "VN",
+    productCode: "SP000476",
+    nameVi: "Túi đựng rác các size",
+    image: "./images/products/tui-rac.webp",
+    origin: "Việt Nam",
+    unit: "Kg",
+    price: 35000,
+    usp: [
+      "Nhựa bền",
+      "Chịu tải tốt",
+      "Đa dạng kích thước"
+    ]
+  },
+
+  {
+    id: 12,
+    category: "Túi rác",
+    factory: "VN",
+    productCode: "SP000477",
+    nameVi: "Túi đựng rác 90x120cm",
+    image: "./images/products/tui-rac-90x120.webp",
+    origin: "Việt Nam",
+    unit: "Kg",
+    price: 38000,
+    usp: [
+      "Kích thước lớn",
+      "Dai",
+      "Khó rách"
+    ]
+  },
+
+  {
+    id: 13,
+    category: "Hộp nhựa",
+    factory: "Malaysia",
+    productCode: "SPAR800T",
+    nameVi: "Hộp xà phòng rửa tay Alcare Nhựa ABS",
+    image: "./images/products/alcare-dispenser.webp",
+    origin: "Malaysia",
+    unit: "Cái",
+    price: 295000,
+    usp: [
+      "Nhựa ABS cao cấp",
+      "Dung tích 800ml",
+      "Treo tường"
+    ]
+  },
+
+  {
+    id: 14,
+    category: "Hộp nhựa",
+    factory: "Malaysia",
+    productCode: "SP000435",
+    nameVi: "Hộp đựng giấy vệ sinh cuộn lớn JRT",
+    image: "./images/products/jrt-dispenser.webp",
+    origin: "Malaysia",
+    unit: "Cái",
+    price: 260000,
+    usp: [
+      "Có khóa an toàn",
+      "Dùng cho cuộn lớn",
+      "Thiết kế sang trọng"
+    ]
+  },
+
+  {
+    id: 15,
+    category: "Hộp nhựa",
+    factory: "China",
+    productCode: "SP000461",
+    nameVi: "Hộp đựng giấy lau tay 100-300 tờ",
+    image: "./images/products/hand-paper-dispenser.webp",
+    origin: "China",
+    unit: "Cái",
+    price: 230000,
+    usp: [
+      "Nhựa ABS",
+      "Dễ thay giấy",
+      "Treo tường tiện lợi"
+    ]
+  }
+]

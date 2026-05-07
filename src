@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LIVI – Giải pháp Giấy cao cấp cho Doanh nghiệp | v5</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--gd:#1a5c34;--gm:#2d8653;--gl:#4caf78;--gmist:#e8f5ed;--td:#1a2e22;--tm:#4a6557;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;color:var(--td);background:#fff;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;}
+html{scroll-behavior:smooth;}
+.navbar-glass{background:rgba(255,255,255,0.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(45,134,83,0.12);box-shadow:0 2px 24px rgba(26,92,52,0.07);}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:500;color:white;backdrop-filter:blur(4px);}
+.product-card{background:white;border-radius:20px;border:1.5px solid #e2ede7;transition:all 0.3s ease;overflow:hidden;box-shadow:0 4px 20px rgba(26,92,52,0.06);}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(26,92,52,0.15);border-color:var(--gl);}
+.benefit-card{background:white;border-radius:16px;border:1px solid #e2ede7;padding:28px;transition:all 0.3s ease;}
+.benefit-card:hover{box-shadow:0 8px 32px rgba(26,92,52,0.1);transform:translateY(-3px);}
+.offer-card{border-radius:20px;padding:28px;transition:all 0.3s ease;position:relative;overflow:hidden;}
+.policy-card{border-radius:20px;overflow:hidden;border:1.5px solid #e2ede7;transition:all 0.3s ease;box-shadow:0 4px 20px rgba(26,92,52,0.06);}
+.policy-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(26,92,52,0.14);}
+.partner-logo{background:white;border-radius:14px;border:1.5px solid #e2ede7;padding:20px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:all 0.3s ease;box-shadow:0 2px 12px rgba(26,92,52,0.05);}
+.partner-logo:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(26,92,52,0.12);border-color:var(--gl);}
+.proof-card{background:white;border-radius:16px;padding:28px;border:1px solid #e2ede7;box-shadow:0 4px 20px rgba(26,92,52,0.06);}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,61,34,0.65);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;animation:fadeIn 0.2s ease;}
+.modal-box{background:white;border-radius:24px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(26,92,52,0.25);animation:slideUp 0.3s ease;}
+.form-modal-box{background:white;border-radius:24px;max-width:440px;width:100%;box-shadow:0 32px 80px rgba(26,92,52,0.25);animation:slideUp 0.3s ease;overflow:hidden;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes slideInL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+.btn-primary{background:linear-gradient(135deg,#2d8653,#1a5c34);color:white;border:none;border-radius:100px;padding:14px 28px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 16px rgba(26,92,52,0.3);display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,92,52,0.4);}
+.btn-outline-white{background:transparent;color:white;border:2px solid rgba(255,255,255,0.6);border-radius:100px;padding:13px 24px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.3s ease;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-outline-white:hover{background:rgba(255,255,255,0.15);}
+.btn-green-outline{background:transparent;color:var(--gm);border:2px solid var(--gm);border-radius:100px;padding:11px 22px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s ease;display:inline-flex;align-items:center;gap:6px;text-decoration:none;}
+.btn-green-outline:hover{background:var(--gm);color:white;}
+.section-label{display:inline-block;background:var(--gmist);color:var(--gd);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:12px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,42px);font-weight:700;color:var(--td);line-height:1.2;}
+.nav-link{font-size:13px;font-weight:500;color:var(--tm);text-decoration:none;transition:color 0.2s;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.nav-link:hover{color:var(--gd);}
+.product-icon-bg{background:linear-gradient(135deg,#e8f5ed,#c8e8d5);border-radius:16px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.form-input{width:100%;border:1.5px solid #d0e4d8;border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border 0.2s;background:#fafcfb;}
+.form-input:focus{border-color:var(--gm);}
+.spec-tag{display:inline-block;background:var(--gmist);color:var(--gd);font-size:12px;font-weight:500;padding:4px 10px;border-radius:6px;margin:3px;}
+.green-divider{width:48px;height:4px;background:linear-gradient(90deg,var(--gm),var(--gl));border-radius:2px;margin-bottom:20px;}
+.modal-box::-webkit-scrollbar{width:5px;}
+.modal-box::-webkit-scrollbar-thumb{background:#c0d8cb;border-radius:10px;}
+.filter-tab{padding:9px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.25s ease;border:1.5px solid #d0e4d8;background:white;color:var(--tm);font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.filter-tab.active{background:linear-gradient(135deg,#2d8653,#1a5c34);color:white;border-color:transparent;box-shadow:0 4px 14px rgba(26,92,52,0.25);}
+.filter-tab:hover:not(.active){border-color:var(--gm);color:var(--gm);}
+/* Slider */
+.slider-dot{height:10px;border-radius:5px;border:none;cursor:pointer;transition:all 0.35s ease;padding:0;}
+.slider-arrow{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:white;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.slider-arrow:hover{background:rgba(255,255,255,0.28);}
+.slide-text{animation:slideInL 0.55s ease forwards;}
+.slide-visual{animation:slideInR 0.55s ease forwards;}
+@media(max-width:900px){.nav-menu{display:none!important;}}
+@media(max-width:700px){.slide-visual-wrap{display:none!important;}.hero-grid{grid-template-columns:1fr!important;}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+const VERSION = "v5.2";
+
+function goSection(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const navH=document.getElementById('main-nav')?.offsetHeight||68;
+  const top=el.getBoundingClientRect().top+window.pageYOffset-navH-8;
+  window.scrollTo({top,behavior:'smooth'});
+}
+
+const navItems=[
+  {label:'Giới thiệu',target:'sec-about'},
+  {label:'Sản phẩm',target:'sec-products'},
+  {label:'Lợi ích',target:'sec-benefits'},
+  {label:'Chứng nhận',target:'sec-certs'},
+  {label:'Khách hàng',target:'sec-proof'},
+  {label:'Đối tác',target:'sec-partners'},
+  {label:'Chính sách',target:'sec-policy'},
+];
+
+const CTA={
+  shopee:'https://shopee.vn/livi_official',
+  lazada:'https://www.lazada.vn/shop/livi-official',
+  zalo:'https://zalo.me/0901234567',
+  catalogue:'https://affiliate.granduniversal.vn/livi-catalogue',
+};
+
+/* ── SLIDES DATA ── */
+const SLIDES=[
+  {
+    id:1,
+    bg:'linear-gradient(135deg,#0a2e18 0%,#1a5c34 45%,#2d8653 80%,#3a9e60 100%)',
+    tag:'🧻 Danh mục sản phẩm',
+    title:'Giải pháp Giấy LIVI\nToàn diện cho Doanh nghiệp',
+    desc:'Hơn 18 dòng sản phẩm – từ Giấy vệ sinh JRT, Khăn lau tay, Giấy ăn đến Giấy lụa cao cấp. Một nhà cung cấp, đủ mọi nhu cầu cho F&B, Khách sạn và Tòa nhà thương mại.',
+    badges:['18+ Dòng sản phẩm','5,000+ Khách hàng','Giao hàng toàn quốc'],
+    cta:'Xem ưu đãi & Báo giá sỉ',
+    emoji:'🧻',
+    visual:'products',
+  },
+  {
+    id:2,
+    bg:'linear-gradient(135deg,#0d2b1a 0%,#163d28 40%,#1e6040 75%,#2a7a52 100%)',
+    tag:'🏭 Quy trình sản xuất',
+    title:'Từ Bột Giấy Đến Thành Phẩm\nTiêu Chuẩn Quốc Tế',
+    desc:'Mỗi cuộn giấy LIVI trải qua quy trình sản xuất khép kín nghiêm ngặt: lựa chọn Virgin Pulp, tẩy trắng không OBA, định hình, cán mỏng đến đóng gói vô trùng – đảm bảo chất lượng đồng đều 100%.',
+    badges:['Không OBA','Không Paraben','ISO 22000'],
+    cta:'Tải Catalogue LIVI',
+    emoji:'🏭',
+    visual:'process',
+  },
+  {
+    id:3,
+    bg:'linear-gradient(135deg,#082010 0%,#0f3d22 40%,#1a5c34 75%,#2d8653 100%)',
+    tag:'🌿 Nguyên liệu xanh',
+    title:'100% Virgin Pulp –\nAn Toàn Tuyệt Đối Cho Người Dùng',
+    desc:'LIVI chỉ sử dụng bột giấy nguyên sinh từ rừng trồng có kiểm soát – không tái chế, không tạp chất. Cam kết mang lại sản phẩm mềm mịn, thấm hút tốt và an toàn tuyệt đối cho da.',
+    badges:['100% Virgin Pulp','Không tái chế','PEFC Certified'],
+    cta:'Tìm hiểu thêm về LIVI',
+    emoji:'🌿',
+    visual:'material',
+  },
+  {
+    id:4,
+    bg:'linear-gradient(135deg,#061a0c 0%,#0a2e18 35%,#0f4a25 65%,#1a6635 100%)',
+    tag:'🌲 Phát triển bền vững',
+    title:'Cam Kết Zero Deforestation –\nBảo Vệ Rừng Cho Tương Lai',
+    desc:'LIVI và Grand Universal cam kết 100% nguyên liệu khai thác hợp pháp từ rừng trồng có kiểm soát. Chứng nhận PEFC và SVLK đảm bảo mỗi sản phẩm góp phần vào mục tiêu Net Zero và ESG doanh nghiệp.',
+    badges:['PEFC Certified','SVLK','Zero Deforestation'],
+    cta:'Tìm hiểu về ESG của LIVI',
+    emoji:'🌲',
+    visual:'forest',
+  },
+  {
+    id:5,
+    bg:'linear-gradient(135deg,#0f2d1e 0%,#1a4a2e 40%,#2a6b46 75%,#3a8a5e 100%)',
+    tag:'🏨 Ứng dụng thực tế',
+    title:'Được Tin Dùng Bởi\nHàng Nghìn Cơ Sở Kinh Doanh',
+    desc:'Từ chuỗi nhà hàng 5 sao, khách sạn quốc tế đến tòa nhà văn phòng và bệnh viện – LIVI là lựa chọn hàng đầu cho những đơn vị đề cao tiêu chuẩn vệ sinh, trải nghiệm khách hàng và tối ưu chi phí.',
+    badges:['F&B & Nhà hàng','Khách sạn 4–5★','Bệnh viện & Tòa nhà'],
+    cta:'Nhận báo giá ngay',
+    emoji:'🏨',
+    visual:'usage',
+  },
+];
+
+/* ── SLIDE VISUALS as simple React ── */
+function SlideVisual({type}){
+  const base={width:'100%',maxWidth:'340px',height:'260px',borderRadius:'20px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'12px',background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',padding:'24px'};
+  if(type==='products') return(
+    <div style={base}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px',width:'100%'}}>
+        {[['🧻','Giấy vệ sinh JRT'],['🤲','Khăn lau tay'],['🍽️','Giấy ăn'],['✨','Giấy lụa']].map(([ic,lb])=>(
+          <div key={lb} style={{background:'rgba(255,255,255,0.1)',borderRadius:'12px',padding:'14px 10px',textAlign:'center',border:'1px solid rgba(255,255,255,0.15)'}}>
+            <div style={{fontSize:'24px',marginBottom:'6px'}}>{ic}</div>
+            <div style={{fontSize:'11px',color:'rgba(255,255,255,0.85)',fontWeight:'600',lineHeight:'1.3'}}>{lb}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{background:'rgba(76,175,120,0.25)',borderRadius:'100px',padding:'8px 20px',border:'1px solid rgba(76,175,120,0.4)'}}>
+        <span style={{color:'white',fontSize:'12px',fontWeight:'700'}}>📦 + Tissue Dispenser</span>
+      </div>
+    </div>
+  );
+  if(type==='process') return(
+    <div style={base}>
+      <div style={{fontSize:'13px',color:'rgba(255,255,255,0.6)',fontWeight:'600',letterSpacing:'1px',textTransform:'uppercase',marginBottom:'4px'}}>Quy trình sản xuất</div>
+      {[['🌿','Virgin Pulp'],['⚗️','Xử lý & Tẩy trắng'],['🖨️','Cán & Định hình'],['📦','Đóng gói vô trùng']].map(([ic,lb],i,arr)=>(
+        <div key={lb} style={{width:'100%'}}>
+          <div style={{background:'rgba(255,255,255,0.1)',borderRadius:'10px',padding:'10px 16px',display:'flex',alignItems:'center',gap:'10px',border:'1px solid rgba(255,255,255,0.12)'}}>
+            <span style={{fontSize:'18px'}}>{ic}</span>
+            <span style={{fontSize:'13px',color:'white',fontWeight:'500'}}>{lb}</span>
+            <span style={{marginLeft:'auto',background:'rgba(76,175,120,0.35)',color:'rgba(255,255,255,0.9)',fontSize:'10px',fontWeight:'700',padding:'2px 8px',borderRadius:'100px'}}>✓</span>
+          </div>
+          {i<arr.length-1&&<div style={{width:'2px',height:'8px',background:'rgba(255,255,255,0.2)',margin:'0 auto'}}/>}
+        </div>
+      ))}
+    </div>
+  );
+  if(type==='material') return(
+    <div style={base}>
+      <div style={{fontSize:'52px'}}>🌿</div>
+      <div style={{fontFamily:"'Playfair Display',serif",fontSize:'20px',fontWeight:'700',color:'white',textAlign:'center'}}>100% Virgin Pulp</div>
+      <div style={{fontSize:'13px',color:'rgba(255,255,255,0.7)',textAlign:'center',lineHeight:'1.6'}}>Bột giấy nguyên sinh từ rừng<br/>trồng có kiểm soát</div>
+      <div style={{display:'flex',flexWrap:'wrap',gap:'6px',justifyContent:'center',marginTop:'4px'}}>
+        {['OBA Free','Không tái chế','Hypoallergenic','PEFC'].map(t=>(
+          <span key={t} style={{background:'rgba(76,175,120,0.25)',color:'white',fontSize:'11px',fontWeight:'600',padding:'4px 10px',borderRadius:'100px',border:'1px solid rgba(76,175,120,0.4)'}}>{t}</span>
+        ))}
+      </div>
+    </div>
+  );
+  if(type==='forest') return(
+    <div style={base}>
+      <div style={{fontSize:'48px'}}>🌲</div>
+      <div style={{fontFamily:"'Playfair Display',serif",fontSize:'18px',fontWeight:'700',color:'white',textAlign:'center'}}>Zero Deforestation</div>
+      <div style={{width:'100%',background:'rgba(255,255,255,0.06)',borderRadius:'12px',padding:'14px',border:'1px solid rgba(255,255,255,0.1)'}}>
+        {[['🏆','PEFC Certified – Nguồn gỗ hợp pháp'],['📋','SVLK – Kiểm soát khai thác'],['♻️','Net Zero – Cam kết ESG dài hạn']].map(([ic,tx])=>(
+          <div key={tx} style={{display:'flex',alignItems:'center',gap:'8px',padding:'6px 0',borderBottom:'1px solid rgba(255,255,255,0.07)'}}>
+            <span style={{fontSize:'16px'}}>{ic}</span>
+            <span style={{fontSize:'12px',color:'rgba(255,255,255,0.8)'}}>{tx}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+  if(type==='usage') return(
+    <div style={base}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'8px',width:'100%'}}>
+        {[['🍜','F&B','200+ chuỗi'],['🏨','Khách sạn','60+ ks'],['🏥','Bệnh viện','15+ bv'],['🏢','Tòa nhà','100+ tn'],['✈️','Hàng không','Catering'],['🎓','Trường học','Edu']].map(([ic,lb,sub])=>(
+          <div key={lb} style={{background:'rgba(255,255,255,0.09)',borderRadius:'10px',padding:'12px 6px',textAlign:'center',border:'1px solid rgba(255,255,255,0.12)'}}>
+            <div style={{fontSize:'22px',marginBottom:'4px'}}>{ic}</div>
+            <div style={{fontSize:'11px',color:'white',fontWeight:'600'}}>{lb}</div>
+            <div style={{fontSize:'10px',color:'rgba(255,255,255,0.55)',marginTop:'2px'}}>{sub}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{fontFamily:"'Playfair Display',serif",fontSize:'13px',color:'rgba(255,255,255,0.7)',textAlign:'center'}}>5,000+ khách hàng · 63 tỉnh thành</div>
+    </div>
+  );
+  return null;
+}
+
+/* ── HERO SLIDER ── */
+function HeroSlider({openForm}){
+  const [cur,setCur]=useState(0);
+  const [key,setKey]=useState(0);
+  const total=SLIDES.length;
+
+  useEffect(()=>{
+    const t=setInterval(()=>{setCur(c=>(c+1)%total);setKey(k=>k+1);},5500);
+    return()=>clearInterval(t);
+  },[]);
+
+  const goTo=(i)=>{setCur(i);setKey(k=>k+1);};
+  const s=SLIDES[cur];
+
+  return(
+    <section style={{background:s.bg,transition:'background 0.7s ease',position:'relative',overflow:'hidden',minHeight:'560px',display:'flex',alignItems:'center'}}>
+      <div style={{position:'absolute',width:'480px',height:'480px',borderRadius:'50%',background:'rgba(76,175,120,0.07)',top:'-140px',right:'-100px',pointerEvents:'none'}}/>
+      <div style={{position:'absolute',width:'320px',height:'320px',borderRadius:'50%',background:'rgba(26,92,52,0.14)',bottom:'-80px',left:'-60px',pointerEvents:'none'}}/>
+      <div style={{position:'absolute',inset:0,backgroundImage:'radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px)',backgroundSize:'30px 30px',pointerEvents:'none'}}/>
+
+      <div style={{maxWidth:'1200px',margin:'0 auto',padding:'64px 28px',position:'relative',zIndex:1,width:'100%'}}>
+        <div className="hero-grid" style={{display:'grid',gridTemplateColumns:'1fr 380px',gap:'48px',alignItems:'center'}}>
+          {/* Text */}
+          <div key={'t'+key} className="slide-text">
+            <div style={{display:'inline-flex',alignItems:'center',gap:'8px',background:'rgba(255,255,255,0.12)',border:'1px solid rgba(255,255,255,0.2)',borderRadius:'100px',padding:'6px 16px',marginBottom:'20px',fontSize:'13px',color:'rgba(255,255,255,0.92)',fontWeight:'600',backdropFilter:'blur(8px)'}}>
+              {s.tag}
+            </div>
+            <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:'clamp(24px,4vw,50px)',fontWeight:'900',color:'white',lineHeight:'1.2',marginBottom:'18px',whiteSpace:'pre-line'}}>
+              {s.title}
+            </h1>
+            <p style={{color:'rgba(255,255,255,0.77)',fontSize:'15px',lineHeight:'1.85',maxWidth:'560px',marginBottom:'26px'}}>
+              {s.desc}
+            </p>
+            <div style={{display:'flex',flexWrap:'wrap',gap:'8px',marginBottom:'28px'}}>
+              {s.badges.map(b=>(
+                <span key={b} style={{display:'inline-flex',alignItems:'center',gap:'5px',background:'rgba(255,255,255,0.12)',border:'1px solid rgba(255,255,255,0.22)',borderRadius:'100px',padding:'5px 12px',fontSize:'12px',fontWeight:'600',color:'white'}}>
+                  ✓ {b}
+                </span>
+              ))}
+            </div>
+            <div style={{display:'flex',flexWrap:'wrap',gap:'10px'}}>
+              <button className="btn-primary" style={{fontSize:'15px',padding:'13px 26px',boxShadow:'0 6px 24px rgba(0,0,0,0.22)'}} onClick={()=>openForm(s.cta)}>
+                🛒 {s.cta}
+              </button>
+              <button className="btn-outline-white" style={{fontSize:'14px',padding:'12px 22px'}} onClick={()=>goSection('sec-products')}>
+                Xem sản phẩm →
+              </button>
+            </div>
+          </div>
+          {/* Visual */}
+          <div key={'v'+key} className="slide-visual slide-visual-wrap" style={{display:'flex',justifyContent:'center'}}>
+            <SlideVisual type={s.visual}/>
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div style={{marginTop:'44px',display:'flex',alignItems:'center',gap:'12px'}}>
+          <div style={{display:'flex',gap:'7px',alignItems:'center'}}>
+            {SLIDES.map((_,i)=>(
+              <button key={i} className="slider-dot" onClick={()=>goTo(i)}
+                style={{width:i===cur?'28px':'9px',background:i===cur?'white':'rgba(255,255,255,0.35)'}}/>
+            ))}
+          </div>
+          <span style={{fontSize:'12px',color:'rgba(255,255,255,0.45)',fontWeight:'500',marginLeft:'4px'}}>{cur+1}/{total}</span>
+          <div style={{marginLeft:'auto',display:'flex',gap:'7px'}}>
+            <button className="slider-arrow" onClick={()=>goTo((cur-1+total)%total)}>←</button>
+            <button className="slider-arrow" onClick={()=>goTo((cur+1)%total)}>→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── GROUPS & PRODUCTS ── */
+const GROUPS=[
+  {id:'all',label:'Tất cả',icon:'🗂️'},
+  {id:'bathroom',label:'Giấy vệ sinh cuộn',icon:'🧻'},
+  {id:'towel',label:'Khăn lau tay',icon:'🤲'},
+  {id:'napkin',label:'Khăn ăn / Giấy ăn',icon:'🍽️'},
+  {id:'cleaning',label:'Tẩy rửa',icon:'🧴'},
+  {id:'bags',label:'Túi rác',icon:'🗑️'},
+  {id:'dispenser',label:'Hộp / Dispenser',icon:'📦'},
+];
+
+const products=[
+  {id:1,group:'bathroom',icon:'🧻',name:'Giấy Vệ Sinh Cuộn Lớn 250m 2 Lớp',subtitle:'Jumbo Roll Tissue – Mã: 69700357',tag:'Thái Lan',tagColor:'#2d8653',
+    cardFeatures:['2 lớp – 0.8×22.5cm / 14.3 g/m²','12 lốc/thùng – hạn dùng 5 năm','100% bột giấy nguyên sinh, PEFC, OBA Free'],
+    modal:{layers:'2 ply',description:'Giấy vệ sinh Livi cuộn lớn JRT 250m 2 lớp, sản xuất tại Thái Lan (nhà máy LARIS). Kích thước 0.8×22.5cm, GSM 14.3 g/m². Giá tham khảo: 33.205đ/cuộn.',types:['250m/cuộn – 2 lớp – 0.8×22.5cm – 12 lốc/thùng'],features:['100% bột giấy nguyên sinh','PEFC Certified','OBA Free','Mềm mại','Tan nhanh trong nước']}},
+  {id:2,group:'towel',icon:'🤲',name:'Khăn Lau Tay L-Fold 250 Tờ 2 Lớp',subtitle:'Hand Towel – Gấp chữ L – Mã: 69700117',tag:'Thái Lan',tagColor:'#1a5c34',
+    cardFeatures:['2 lớp – 24×21cm / 20 g/m²','24 gói/thùng – hạn dùng 5 năm','Thấm hút nhanh, không bụi, OBA Free'],
+    modal:{layers:'2 ply',description:'Khăn giấy lau tay Livi L-Fold 250 tờ 2 lớp, sản xuất tại Thái Lan (nhà máy LARIS). Kích thước 24×21cm, GSM 20 g/m², thấm hút nhanh. Giá tham khảo: 34.000đ/gói.',types:['L-Fold – 24×21cm – 250 tờ/gói – 2 lớp – 24 gói/thùng'],features:['100% bột giấy nguyên sinh','PEFC Certified','OBA Free','Thấm hút nhanh','Không bụi']}},
+  {id:3,group:'bathroom',icon:'🧻',name:'Giấy Vệ Sinh Livi 24 Cuộn 2 Lớp',subtitle:'Jumbo Roll Tissue – Mã: 69920359',tag:'Indonesia',tagColor:'#4caf78',
+    cardFeatures:['2 lớp – 10.7×10cm / 14.3 g/m²','6 lốc/thùng – hạn dùng 5 năm','OBA Free, mềm mại, tan nhanh trong nước'],
+    modal:{layers:'2 ply',description:'Giấy vệ sinh Livi 24 cuộn 2 lớp, sản xuất tại Indonesia (nhà máy TUE). Kích thước 10.7×10cm, GSM 14.3 g/m². Giá tham khảo: 83.160đ/lốc.',types:['170 tờ/cuộn – 2 lớp – 24 cuộn/lốc – 6 lốc/thùng'],features:['100% bột giấy nguyên sinh','OBA Free','Mềm mại','Tan nhanh trong nước']}},
+  {id:4,group:'napkin',icon:'🍽️',name:'Khăn Ăn Luncheon 500 Tờ Màu Nâu',subtitle:'Napkin Tissue – Luncheon – Mã: 69920066',tag:'Tự nhiên',tagColor:'#0f3d22',
+    cardFeatures:['1 lớp – 33×33cm / 17 g/m²','12 gói/thùng – hạn dùng 5 năm','Giấy màu nâu tự nhiên, PEFC, dai'],
+    modal:{layers:'1 ply',description:'Khăn ăn Livi Luncheon 500 tờ 1 lớp màu nâu tự nhiên, sản xuất tại Indonesia. Kích thước 33×33cm, GSM 17 g/m². Phù hợp nhà hàng phong cách rustic/organic. Giá tham khảo: 65.000đ/gói.',types:['Luncheon – 33×33cm – 500 tờ/gói – 1 lớp – 12 gói/thùng'],features:['Giấy màu nâu tự nhiên','PEFC Certified','Dai','Thấm hút nhanh']}},
+  {id:5,group:'napkin',icon:'🍽️',name:'Khăn Ăn Luncheon 500 Tờ Màu Trắng',subtitle:'Napkin Tissue – Luncheon – Mã: 69920132',tag:'Phổ biến',tagColor:'#2d8653',
+    cardFeatures:['1 lớp – 33×33cm / 16 g/m²','12 gói/thùng – hạn dùng 5 năm','100% bột giấy nguyên sinh, OBA Free'],
+    modal:{layers:'1 ply',description:'Khăn ăn Livi Luncheon 500 tờ 1 lớp màu trắng, sản xuất tại Indonesia. Kích thước 33×33cm, GSM 16 g/m², mềm mại và thấm hút tốt. Giá tham khảo: 65.000đ/gói.',types:['Luncheon – 33×33cm – 500 tờ/gói – 1 lớp – 12 gói/thùng'],features:['100% bột giấy nguyên sinh','OBA Free','Mềm mại','Thấm hút tốt']}},
+  {id:6,group:'towel',icon:'🤲',name:'Khăn Lau Tay L-Fold ½ Gấp 300 Tờ',subtitle:'Hand Towel – Gấp 1/2 – Mã: 69918722',tag:'Kinh tế',tagColor:'#4caf78',
+    cardFeatures:['1 lớp – 21×22cm / 34.1 g/m²','24 gói/thùng – hạn dùng 5 năm','Thấm hút tốt, không bụi, phù hợp toilet'],
+    modal:{layers:'1 ply',description:'Khăn giấy lau tay Livi L-Fold gấp 1/2 300 tờ 1 lớp, sản xuất tại Indonesia. Kích thước 21×22cm, GSM 34.1 g/m² – dày dặn, phù hợp nhà vệ sinh công cộng và văn phòng. Giá tham khảo: 32.000đ/gói.',types:['L-Fold 1/2 – 21×22cm – 300 tờ/gói – 1 lớp – 24 gói/thùng'],features:['Thấm hút tốt','Không bụi','Phù hợp toilet','GSM 34.1 g/m²']}},
+  {id:7,group:'napkin',icon:'🍽️',name:'Khăn Ăn Luncheon 100 Tờ Full Emboss',subtitle:'Napkin Tissue – Full Emboss – Mã: 69911241',tag:'Food Safe',tagColor:'#2d8653',
+    cardFeatures:['1 lớp – 33×30cm / 18 g/m²','30 gói/thùng – hạn dùng 5 năm','Full emboss, mềm mại, thấm hút tốt'],
+    modal:{layers:'1 ply',description:'Khăn ăn Livi Luncheon 100 tờ 1 lớp full emboss, sản xuất tại Indonesia. Kích thước 33×30cm, GSM 18 g/m², thiết kế dập nổi toàn bộ sang trọng. Giá tham khảo: 15.218đ/gói.',types:['Luncheon Full Emboss – 33×30cm – 100 tờ/gói – 1 lớp – 30 gói/thùng'],features:['Full emboss','Mềm mại','Thấm hút tốt']}},
+  {id:8,group:'napkin',icon:'🍽️',name:'Khăn Ăn EVO Cocktail 100 Tờ 2 Lớp',subtitle:'Napkin Tissue – Cocktail – Mã: 69911035',tag:'Cao cấp',tagColor:'#1a5c34',
+    cardFeatures:['2 lớp – 22.5×23cm / 15 g/m²','60 gói/thùng – hạn dùng 5 năm','Border emboss, dùng cho café/bar'],
+    modal:{layers:'2 ply',description:'Khăn ăn Livi EVO Cocktail 100 tờ 2 lớp, sản xuất tại Indonesia. Kích thước 22.5×23cm, GSM 15 g/m², thiết kế border emboss sang trọng, phù hợp quán café, bar và tiệc đứng. Giá tham khảo: 10.600đ/gói.',types:['Cocktail – 22.5×23cm – 100 tờ/gói – 2 lớp – 60 gói/thùng'],features:['Border emboss','Thiết kế sang trọng','Dùng cho cafe/bar','2 lớp cao cấp']}},
+  {id:9,group:'napkin',icon:'🍽️',name:'Khăn Ăn EVO Dinner 50 Tờ 2 Lớp',subtitle:'Napkin Tissue – Dinner – Mã: 69911032',tag:'Fine Dining',tagColor:'#0f3d22',
+    cardFeatures:['2 lớp – 41.5×40cm / 13.7 g/m²','48 gói/thùng – hạn dùng 5 năm','Kích thước lớn, phù hợp nhà hàng'],
+    modal:{layers:'2 ply',description:'Khăn ăn Livi EVO Dinner 50 tờ 2 lớp, sản xuất tại Indonesia. Kích thước lớn 41.5×40cm, GSM 13.7 g/m², 2 lớp cao cấp dành cho nhà hàng fine dining và sự kiện sang trọng. Giá tham khảo: 17.000đ/gói.',types:['Dinner – 41.5×40cm – 50 tờ/gói – 2 lớp – 48 gói/thùng'],features:['Kích thước lớn','2 lớp cao cấp','Phù hợp nhà hàng']}},
+  {id:10,group:'cleaning',icon:'🧴',name:'Nước Rửa Tay Seifa 4.5L',subtitle:'Dung dịch vệ sinh – Mã: SP000456',tag:'Diệt khuẩn',tagColor:'#2d8653',
+    cardFeatures:['Can 4.5L – Sản xuất tại Việt Nam','Diệt khuẩn, khử mùi','Có dưỡng ẩm bảo vệ da'],
+    modal:{layers:'–',description:'Nước rửa tay Seifa can 4.5L, sản xuất tại Việt Nam. Công thức diệt khuẩn, khử mùi và có thành phần dưỡng ẩm bảo vệ da tay. Phù hợp nhà hàng, khách sạn, văn phòng. Giá tham khảo: 158.400đ/can.',types:['Can 4.5L – 1 can/thùng – Bảo quản: 24 tháng'],features:['Diệt khuẩn','Khử mùi','Có dưỡng ẩm','Sản xuất tại Việt Nam']}},
+  {id:11,group:'bags',icon:'🗑️',name:'Túi Đựng Rác Đa Kích Thước',subtitle:'Túi rác – Mã: SP000476',tag:'Đa dạng',tagColor:'#4caf78',
+    cardFeatures:['Nhựa bền, chịu tải tốt','Đa dạng kích thước','Sản xuất tại Việt Nam'],
+    modal:{layers:'–',description:'Túi đựng rác đa kích thước, sản xuất tại Việt Nam. Nhựa bền, chịu tải tốt, phù hợp mọi nhu cầu trong nhà hàng, khách sạn và tòa nhà. Giá tham khảo: 35.000đ/kg.',types:['Bán theo kg – Đa kích thước – Mã: SP000476'],features:['Nhựa bền','Chịu tải tốt','Đa dạng kích thước']}},
+  {id:12,group:'bags',icon:'🗑️',name:'Túi Đựng Rác 90×120cm',subtitle:'Túi rác cỡ lớn – Mã: SP000477',tag:'Cỡ lớn',tagColor:'#1a5c34',
+    cardFeatures:['Kích thước lớn 90×120cm','Dai, khó rách','Sản xuất tại Việt Nam'],
+    modal:{layers:'–',description:'Túi đựng rác kích thước lớn 90×120cm, sản xuất tại Việt Nam. Chất liệu dai, khó rách, phù hợp chứa lượng rác lớn trong nhà hàng, khách sạn và khu văn phòng. Giá tham khảo: 38.000đ/kg.',types:['90×120cm – Bán theo kg – Mã: SP000477'],features:['Kích thước lớn','Dai','Khó rách']}},
+  {id:13,group:'dispenser',icon:'📦',name:'Hộp Xà Phòng Alcare Nhựa ABS 800ml',subtitle:'Soap Dispenser – Mã: SPAR800T',tag:'Malaysia',tagColor:'#2d8653',
+    cardFeatures:['Nhựa ABS cao cấp – 800ml','Treo tường tiện lợi','Thiết kế sang trọng'],
+    modal:{layers:'–',description:'Hộp xà phòng rửa tay Alcare nhựa ABS cao cấp, sản xuất tại Malaysia. Dung tích 800ml, thiết kế treo tường, phù hợp nhà hàng, khách sạn và văn phòng. Giá tham khảo: 295.000đ/cái.',types:['Nhựa ABS – 800ml – Treo tường – Mã: SPAR800T'],features:['Nhựa ABS cao cấp','Dung tích 800ml','Treo tường','Sản xuất tại Malaysia']}},
+  {id:14,group:'dispenser',icon:'📦',name:'Hộp Đựng Giấy JRT Cuộn Lớn',subtitle:'JRT Dispenser – Mã: SP000435',tag:'Tặng kèm',tagColor:'#1a5c34',
+    cardFeatures:['Có khóa an toàn','Dùng cho cuộn lớn JRT','Thiết kế sang trọng – Malaysia'],
+    modal:{layers:'–',description:'Hộp đựng giấy vệ sinh cuộn lớn JRT, sản xuất tại Malaysia. Có khóa an toàn chống lấy tự do, thiết kế sang trọng phù hợp nhà vệ sinh khách sạn và tòa nhà thương mại. Giá tham khảo: 260.000đ/cái.',types:['JRT Dispenser – Nhựa – Có khóa – Mã: SP000435'],features:['Có khóa an toàn','Dùng cho cuộn lớn','Thiết kế sang trọng','Sản xuất tại Malaysia']}},
+  {id:15,group:'dispenser',icon:'📦',name:'Hộp Đựng Giấy Lau Tay 100–300 Tờ',subtitle:'Hand Towel Dispenser – Mã: SP000461',tag:'Đa dụng',tagColor:'#0f3d22',
+    cardFeatures:['Nhựa ABS cao cấp','Dễ thay giấy, treo tường','Tương thích 100–300 tờ – Trung Quốc'],
+    modal:{layers:'–',description:'Hộp đựng giấy lau tay 100–300 tờ, sản xuất tại Trung Quốc. Nhựa ABS cao cấp, treo tường tiện lợi, tương thích giấy lau tay dạng Z-fold, L-fold 100–300 tờ. Giá tham khảo: 230.000đ/cái.',types:['Hand Towel Dispenser – Nhựa ABS – Treo tường – Mã: SP000461'],features:['Nhựa ABS','Dễ thay giấy','Treo tường tiện lợi','Tương thích 100–300 tờ']}},
+];
+
+const benefits=[
+  {icon:'💰',title:'Tối ưu vận hành',desc:'Mua sỉ số lượng lớn với giá ưu đãi. Giấy cuộn JRT dung tích lớn giảm tần suất thay thế, hạn chế hao hụt và công quản lý.'},
+  {icon:'🌟',title:'Trải nghiệm đẳng cấp',desc:'100% bột giấy nguyên sinh Virgin Pulp. Không tái chế, không xơ mủn – mang lại cảm giác mềm mịn nhất quán cho mọi khách hàng.'},
+  {icon:'🏥',title:'An toàn Y tế & Sức khỏe',desc:'Chuẩn Hypoallergenic không gây kích ứng. Food Safe ISO 22000 an toàn tiếp xúc thực phẩm. 100% OBA Free không hóa chất tẩy huỳnh quang.'},
+  {icon:'🌱',title:'Phát triển bền vững (ESG)',desc:'Cam kết Zero Deforestation. Chứng nhận PEFC quốc tế và SVLK cho nguồn gỗ hợp pháp, giúp doanh nghiệp tự tin trong báo cáo ESG.'},
+];
+const proofs=[
+  {icon:'🍜',sector:'Chuỗi F&B',title:'Giữ bếp & quầy bar luôn vệ sinh',desc:'Chuỗi nhà hàng triển khai khăn Multifold và hộp đựng lắp chuẩn cách sàn 120cm. Bồn rửa luôn khô, an tâm vì giấy đạt chuẩn Food Safe.'},
+  {icon:'🏨',sector:'Khách sạn 4–5 sao',title:'Nâng tầm trải nghiệm phòng khách',desc:'Khách sạn thay Facial Tissue Extra Soft LIVI. Khách lưu trú ghi nhận da mượt, không kích ứng – không hóa chất, không OBA.'},
+  {icon:'🏢',sector:'Tòa nhà & Văn phòng',title:'Giảm chi phí, không tắc bồn cầu',desc:'Thay giấy lẻ bằng JRT 1000gr trong Dispenser ABS (cách sàn 80cm). Giảm chi phí vật tư 15%, giấy Flushable không gây tắc thoát nước.'},
+];
+const partners=[
+  {icon:'🍣',name:'Isushi Vietnam',sector:'Chuỗi F&B',tag:'200+ chi nhánh',color:'#e8f5ed'},
+  {icon:'☕',name:'The Coffee House',sector:'Chuỗi F&B',tag:'150+ chi nhánh',color:'#fff8e8'},
+  {icon:'🍔',name:'Burger Factory',sector:'Chuỗi F&B',tag:'80+ chi nhánh',color:'#fef0e8'},
+  {icon:'🏨',name:'Mường Thanh Hotels',sector:'Khách sạn',tag:'60+ khách sạn',color:'#e8f0fe'},
+  {icon:'🌴',name:'Alma Resort',sector:'Nghỉ dưỡng',tag:'Khu nghỉ dưỡng 5★',color:'#e8f5ed'},
+  {icon:'🏢',name:'Vinhomes Smart City',sector:'Tòa nhà',tag:'12 tòa nhà',color:'#f3e8fe'},
+  {icon:'🏥',name:'Vinmec International',sector:'Y tế',tag:'15 bệnh viện',color:'#fce8e8'},
+  {icon:'✈️',name:'Nội Bài Catering',sector:'Hàng không',tag:'Suất ăn hàng không',color:'#e8f5fd'},
+];
+const policies=[
+  {tier:'01',icon:'🛍️',level:'Cửa hàng / Cá nhân',sublabel:'Thành viên',badge:'Thành viên',badgeBg:'#e8f5ed',badgeColor:'#2d8653',headerBg:'linear-gradient(135deg,#e8f5ed,#c8e8d5)',isLight:true,minOrder:'Từ 1 thùng',discount:'Giá niêm yết',delivery:'Giao tận nơi',perks:['Mua lẻ theo thùng, không yêu cầu số lượng tối thiểu lớn','Hỗ trợ đổi trả 7 ngày nếu sản phẩm lỗi','Tích điểm thành viên đổi quà hấp dẫn','Nhận thông báo khuyến mãi & sản phẩm mới ưu tiên','Miễn phí giao hàng cho đơn từ 5 thùng trở lên'],cta:'Đăng ký thành viên'},
+  {tier:'02',icon:'🤝',level:'Đại lý khu vực',sublabel:'Đại lý',badge:'Đại lý',badgeBg:'#e8f0fe',badgeColor:'#4a55d4',headerBg:'linear-gradient(135deg,#1a5c34,#2d8653)',isLight:false,minOrder:'Từ 20 thùng/tháng',discount:'10–18%',delivery:'Giao hàng ưu tiên',perks:['Chiết khấu 10–18% tùy sản lượng cam kết hàng tháng','Độc quyền phân phối theo khu vực địa lý được phân công','Hỗ trợ vật tư trưng bày & tài liệu marketing miễn phí','Tham gia chương trình thưởng doanh số quý/năm','Đào tạo sản phẩm & kỹ năng bán hàng B2B định kỳ','Hỗ trợ kho nhỏ & công nợ linh hoạt theo thỏa thuận'],cta:'Đăng ký Đại lý'},
+  {tier:'03',icon:'🏭',level:'Nhà phân phối sỉ',sublabel:'Nhà phân phối',badge:'Phân phối',badgeBg:'#fff3e0',badgeColor:'#e65c00',headerBg:'linear-gradient(135deg,#0f3d22,#1a5c34)',isLight:false,minOrder:'Từ 100 thùng/tháng',discount:'20–30%',delivery:'Xe tải giao tận kho',perks:['Chiết khấu 20–30% + thưởng vượt chỉ tiêu','Phân vùng độc quyền cấp tỉnh/thành phố theo hợp đồng','Ngân sách marketing đồng hành theo từng chiến dịch','Công nợ 30–45 ngày, hạn mức tín dụng linh hoạt','Ưu tiên phân bổ hàng trong mùa cao điểm & hàng mới','Chuyên viên kinh doanh hỗ trợ 1-1, phản hồi trong 4 giờ','Hội nghị đối tác thường niên & study tour nước ngoài'],cta:'Trở thành Nhà phân phối'},
+];
+
+/* ── FORM MODAL ── */
+function FormModal({title,onClose}){
+  const [fd,setFd]=useState({name:'',email:'',zalo:''});
+  const [done,setDone]=useState(false);
+  const valid=fd.name.trim()&&fd.email.trim()&&fd.zalo.trim();
+  return(
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="form-modal-box" onClick={e=>e.stopPropagation()}>
+        <div style={{background:'linear-gradient(135deg,#1a5c34,#2d8653)',padding:'28px 28px 24px',position:'relative'}}>
+          <button onClick={onClose} style={{position:'absolute',top:'14px',right:'14px',background:'rgba(255,255,255,0.2)',border:'none',borderRadius:'50%',width:'32px',height:'32px',color:'white',fontSize:'18px',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>×</button>
+          <div style={{fontSize:'32px',marginBottom:'10px'}}>📋</div>
+          <h3 style={{fontFamily:"'Playfair Display',serif",color:'white',fontSize:'20px',fontWeight:'700'}}>{title||'Đăng ký nhận ưu đãi'}</h3>
+          <p style={{color:'rgba(255,255,255,0.75)',fontSize:'13px',marginTop:'4px'}}>Điền đầy đủ để nhận báo giá & ưu đãi tốt nhất</p>
+        </div>
+        <div style={{padding:'28px'}}>
+          {!done?(
+            <>
+              <div style={{display:'flex',flexDirection:'column',gap:'12px',marginBottom:'20px'}}>
+                <div><label style={{fontSize:'12px',fontWeight:'600',color:'#5a7566',display:'block',marginBottom:'6px'}}>Họ tên / Tên doanh nghiệp *</label>
+                  <input className="form-input" placeholder="VD: Nguyễn Văn A / Nhà hàng Hương Việt" value={fd.name} onChange={e=>setFd({...fd,name:e.target.value})}/></div>
+                <div><label style={{fontSize:'12px',fontWeight:'600',color:'#5a7566',display:'block',marginBottom:'6px'}}>Email liên hệ *</label>
+                  <input className="form-input" placeholder="email@example.com" type="email" value={fd.email} onChange={e=>setFd({...fd,email:e.target.value})}/></div>
+                <div><label style={{fontSize:'12px',fontWeight:'600',color:'#5a7566',display:'block',marginBottom:'6px'}}>Số Zalo / Điện thoại *</label>
+                  <input className="form-input" placeholder="0901 234 567" value={fd.zalo} onChange={e=>setFd({...fd,zalo:e.target.value})}/></div>
+              </div>
+              <button onClick={()=>valid&&setDone(true)} disabled={!valid} className="btn-primary"
+                style={{width:'100%',justifyContent:'center',fontSize:'15px',padding:'14px',opacity:valid?1:0.45,cursor:valid?'pointer':'not-allowed',transform:'none'}}>
+                🎁 {valid?'Nhận ưu đãi ngay':'Vui lòng điền đầy đủ thông tin'}
+              </button>
+              <p style={{fontSize:'11px',color:'#8aaa96',textAlign:'center',marginTop:'10px'}}>Không spam – chỉ dùng để tư vấn</p>
+            </>
+          ):(
+            <div style={{textAlign:'center',padding:'20px 0'}}>
+              <div style={{fontSize:'52px',marginBottom:'14px'}}>🎉</div>
+              <h4 style={{fontFamily:"'Playfair Display',serif",fontSize:'22px',fontWeight:'700',color:'#1a5c34',marginBottom:'8px'}}>Đăng ký thành công!</h4>
+              <p style={{fontSize:'14px',color:'#5a7566',lineHeight:'1.7'}}>Chúng tôi sẽ liên hệ qua Zalo <strong>{fd.zalo}</strong> trong 2 giờ làm việc.</p>
+              <button onClick={onClose} className="btn-green-outline" style={{marginTop:'20px',justifyContent:'center'}}>Đóng</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── PRODUCT MODAL ── */
+function ProductModal({product,onClose,openForm}){
+  if(!product)return null;
+  return(
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={e=>e.stopPropagation()}>
+        <div style={{background:'linear-gradient(135deg,#1a5c34,#2d8653)',padding:'28px',borderRadius:'24px 24px 0 0',position:'relative'}}>
+          <button onClick={onClose} style={{position:'absolute',top:'16px',right:'16px',background:'rgba(255,255,255,0.2)',border:'none',borderRadius:'50%',width:'36px',height:'36px',color:'white',fontSize:'20px',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>×</button>
+          <div style={{fontSize:'40px',marginBottom:'10px'}}>{product.icon}</div>
+          <div style={{color:'rgba(255,255,255,0.7)',fontSize:'12px',fontWeight:'600',letterSpacing:'1.5px',textTransform:'uppercase',marginBottom:'6px'}}>{product.subtitle}</div>
+          <h3 style={{fontFamily:"'Playfair Display',serif",color:'white',fontSize:'22px',fontWeight:'700'}}>{product.name}</h3>
+          <span style={{display:'inline-block',background:'rgba(255,255,255,0.2)',color:'white',fontSize:'12px',fontWeight:'600',padding:'4px 12px',borderRadius:'100px',marginTop:'10px'}}>{product.modal.layers} | {product.tag}</span>
+        </div>
+        <div style={{padding:'28px'}}>
+          <p style={{color:'#4a6557',fontSize:'14px',lineHeight:'1.7',marginBottom:'24px'}}>{product.modal.description}</p>
+          <div style={{marginBottom:'20px'}}>
+            <div style={{fontSize:'11px',fontWeight:'700',letterSpacing:'1.2px',color:'#9ab8a8',textTransform:'uppercase',marginBottom:'12px'}}>Thông số & phân loại</div>
+            {product.modal.types.map((t,i)=>(
+              <div key={i} style={{display:'flex',gap:'10px',padding:'10px 0',borderBottom:'1px solid #f0f5f2'}}>
+                <span style={{color:'#2d8653',fontWeight:'700',flexShrink:0}}>◆</span>
+                <span style={{fontSize:'14px',color:'#2a3d30'}}>{t}</span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{fontSize:'11px',fontWeight:'700',letterSpacing:'1.2px',color:'#9ab8a8',textTransform:'uppercase',marginBottom:'12px'}}>Đặc tính nổi bật</div>
+            <div style={{display:'flex',flexWrap:'wrap',gap:'6px'}}>{product.modal.features.map((f,i)=><span key={i} className="spec-tag">✓ {f}</span>)}</div>
+          </div>
+          <div style={{marginTop:'28px',paddingTop:'20px',borderTop:'1px solid #e8f0eb'}}>
+            <button onClick={()=>{onClose();openForm('Báo giá sỉ – '+product.name);}} className="btn-primary" style={{width:'100%',justifyContent:'center',fontSize:'15px'}}>
+              📋 Yêu cầu báo giá sỉ ngay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const AFFILIATE_DEMO_LINK = 'granduniversal.vn/livi?ref=DL-2024-8X3K';
+
+function AffiliateBar(){
+  const [copied,setCopied]=useState(false);
+  const copy=()=>{
+    navigator.clipboard.writeText('https://'+AFFILIATE_DEMO_LINK).then(()=>{
+      setCopied(true);
+      setTimeout(()=>setCopied(false),2000);
+    });
+  };
+  return(
+    <div style={{marginTop:'16px',background:'linear-gradient(135deg,#0f3d22,#1a5c34)',borderRadius:'12px',padding:'14px 16px',border:'1px solid rgba(76,175,120,0.3)'}}>
+      <div style={{fontSize:'10px',fontWeight:'700',letterSpacing:'1.2px',color:'rgba(255,255,255,0.5)',textTransform:'uppercase',marginBottom:'8px',display:'flex',alignItems:'center',gap:'6px'}}>
+        <span>🔗</span> Link Affiliate của bạn (preview)
+      </div>
+      <div style={{display:'flex',gap:'8px',alignItems:'center'}}>
+        <div style={{flex:1,background:'rgba(255,255,255,0.08)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:'8px',padding:'9px 12px',fontSize:'12px',color:'rgba(255,255,255,0.85)',fontFamily:'monospace',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>
+          {AFFILIATE_DEMO_LINK}
+        </div>
+        <button onClick={copy} style={{flexShrink:0,background:copied?'#2d8653':'#c8860a',border:'none',borderRadius:'8px',padding:'9px 14px',color:'white',fontSize:'12px',fontWeight:'700',cursor:'pointer',transition:'all 0.2s',display:'flex',alignItems:'center',gap:'6px',fontFamily:"'DM Sans',sans-serif",whiteSpace:'nowrap'}}>
+          {copied?'✓ Đã chép':'📋 Sao chép'}
+        </button>
+      </div>
+      <p style={{fontSize:'11px',color:'rgba(255,255,255,0.45)',marginTop:'8px',lineHeight:'1.5'}}>
+        Sau khi đăng ký Đại lý, bạn sẽ nhận link cá nhân hóa như trên để chia sẻ & theo dõi hoa hồng.
+      </p>
+    </div>
+  );
+}
+function App(){
+  const [activeProduct,setActiveProduct]=useState(null);
+  const [formModal,setFormModal]=useState(null);
+  const [activeGroup,setActiveGroup]=useState('all');
+  const [inlineForm,setInlineForm]=useState({name:'',email:'',zalo:''});
+  const [inlineDone,setInlineDone]=useState(false);
+  const inlineValid=inlineForm.name.trim()&&inlineForm.email.trim()&&inlineForm.zalo.trim();
+  const openForm=(title)=>{setActiveProduct(null);setFormModal(title);};
+  const closeForm=()=>setFormModal(null);
+  const selectedProduct=products.find(p=>p.id===activeProduct);
+  const filtered=useMemo(()=>activeGroup==='all'?products:products.filter(p=>p.group===activeGroup),[activeGroup]);
+  const countFor=(gid)=>gid==='all'?products.length:products.filter(p=>p.group===gid).length;
+
+  return(
+    <div>
+      {/* NAVBAR */}
+      <nav id="main-nav" className="navbar-glass" style={{position:'sticky',top:0,zIndex:200,padding:'0 20px'}}>
+        <div style={{maxWidth:'1280px',margin:'0 auto',display:'flex',alignItems:'center',justifyContent:'space-between',height:'68px',gap:'16px'}}>
+          <div style={{display:'flex',alignItems:'center',gap:'12px',flexShrink:0}}>
+            <div style={{background:'linear-gradient(135deg,#2d8653,#1a5c34)',borderRadius:'10px',width:'40px',height:'40px',display:'flex',alignItems:'center',justifyContent:'center',color:'white',fontWeight:'900',fontFamily:"'Playfair Display',serif",fontSize:'18px'}}>L</div>
+            <div>
+              <div style={{fontFamily:"'Playfair Display',serif",fontWeight:'700',fontSize:'18px',color:'#1a2e22',lineHeight:'1'}}>LIVI</div>
+              <div style={{fontSize:'10px',color:'#6b8c78',fontWeight:'500'}}>Phân phối bởi Grand Universal Vietnam</div>
+            </div>
+          </div>
+          <div className="nav-menu" style={{display:'flex',alignItems:'center',gap:'18px'}}>
+            {navItems.map(item=><button key={item.label} className="nav-link" onClick={()=>goSection(item.target)}>{item.label}</button>)}
+          </div>
+          <button className="btn-primary" style={{padding:'10px 18px',fontSize:'13px',flexShrink:0}} onClick={()=>openForm('Nhận Báo Giá Sỉ')}>📋 Nhận Báo Giá Sỉ</button>
+        </div>
+      </nav>
+
+      {/* SLIDER */}
+      <HeroSlider openForm={openForm}/>
+
+      {/* ABOUT */}
+      <section id="sec-about" style={{background:'white',padding:'80px 24px'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'60px',alignItems:'center'}}>
+            <div>
+              <span className="section-label">Giới thiệu</span>
+              <h2 className="section-title" style={{marginBottom:'20px'}}>Về Thương Hiệu LIVI & Grand Universal Vietnam</h2>
+              <div className="green-divider"></div>
+              <p style={{fontSize:'15px',color:'#4a6557',lineHeight:'1.85',marginBottom:'16px'}}><strong style={{color:'#1a5c34'}}>LIVI</strong> là thương hiệu giấy tissue cao cấp được phân phối bởi <strong style={{color:'#1a5c34'}}>Grand Universal Trading Vietnam</strong> – nhà phân phối B2B chuyên nghiệp với hơn 10 năm kinh nghiệm trong ngành vật tư tiêu hao cho F&B, Khách sạn và Tòa nhà thương mại.</p>
+              <p style={{fontSize:'15px',color:'#4a6557',lineHeight:'1.85',marginBottom:'16px'}}>Toàn bộ sản phẩm LIVI được sản xuất từ <strong>100% bột giấy nguyên sinh (Virgin Pulp)</strong>, không tái chế – đảm bảo độ mềm mịn, thấm hút vượt trội và an toàn tuyệt đối.</p>
+              <p style={{fontSize:'15px',color:'#4a6557',lineHeight:'1.85'}}>Với danh mục hơn 18 dòng sản phẩm và hệ thống Dispenser chuyên dụng, LIVI cung cấp giải pháp vệ sinh toàn diện từ nhà hàng, khách sạn đến bệnh viện và khu văn phòng – đạt chuẩn ISO 22000, PEFC, Halal và Hypoallergenic.</p>
+              <div style={{marginTop:'28px',display:'flex',gap:'12px',flexWrap:'wrap'}}>
+                <button className="btn-primary" onClick={()=>openForm('Tìm hiểu thêm về LIVI')}>📋 Liên hệ tư vấn</button>
+                <a href={CTA.catalogue} target="_blank" rel="noopener noreferrer" className="btn-green-outline">📄 Tải Catalogue</a>
+              </div>
+            </div>
+            <div>
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'14px'}}>
+                {[{num:'2010',label:'Năm thành lập',icon:'🏢'},{num:'5,000+',label:'Khách hàng B2B',icon:'🤝'},{num:'18+',label:'Dòng sản phẩm',icon:'🧻'},{num:'63',label:'Tỉnh thành phủ sóng',icon:'🗺️'},{num:'100%',label:'Virgin Pulp',icon:'🌿'},{num:'6',label:'Chứng nhận quốc tế',icon:'🏆'}].map((s,i)=>(
+                  <div key={i} style={{background:['linear-gradient(135deg,#e8f5ed,#d0eedd)','linear-gradient(135deg,#f0f9f3,#e4f5eb)','linear-gradient(135deg,#f7fcf9,#edf7f2)'][i%3],borderRadius:'16px',padding:'22px',border:'1px solid #d8ede3'}}>
+                    <div style={{fontSize:'26px',marginBottom:'8px'}}>{s.icon}</div>
+                    <div style={{fontFamily:"'Playfair Display',serif",fontSize:'26px',fontWeight:'900',color:'#1a5c34',lineHeight:'1'}}>{s.num}</div>
+                    <div style={{fontSize:'12px',color:'#5a7566',marginTop:'6px',fontWeight:'500'}}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{marginTop:'14px',background:'linear-gradient(135deg,#1a5c34,#2d8653)',borderRadius:'14px',padding:'16px 18px',display:'flex',flexWrap:'wrap',gap:'8px',justifyContent:'center'}}>
+                {['ISO 22000','PEFC','Halal','OBA Free','SVLK','Hypoallergenic'].map(c=>(
+                  <span key={c} style={{background:'rgba(255,255,255,0.18)',color:'white',fontSize:'11px',fontWeight:'700',padding:'4px 10px',borderRadius:'100px',border:'1px solid rgba(255,255,255,0.22)'}}>{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCTS */}
+      <section id="sec-products" style={{background:'#f7f9f8',padding:'72px 24px'}}>
+        <div style={{maxWidth:'1280px',margin:'0 auto'}}>
+          <div style={{textAlign:'center',marginBottom:'36px'}}>
+            <span className="section-label">Danh mục sản phẩm</span>
+            <h2 className="section-title">Các Dòng Sản Phẩm LIVI</h2>
+            <p style={{color:'#5a7566',fontSize:'15px',maxWidth:'520px',margin:'10px auto 0'}}>Chọn nhóm để lọc sản phẩm. Click "Xem chi tiết" để xem thông số đầy đủ.</p>
+          </div>
+          {/* Filter */}
+          <div style={{display:'flex',flexWrap:'wrap',gap:'8px',justifyContent:'center',marginBottom:'32px'}}>
+            {GROUPS.map(g=>(
+              <button key={g.id} className={'filter-tab'+(activeGroup===g.id?' active':'')} onClick={()=>setActiveGroup(g.id)}>
+                {g.icon} {g.label}
+                <span style={{marginLeft:'6px',background:activeGroup===g.id?'rgba(255,255,255,0.25)':'#e8f5ed',color:activeGroup===g.id?'white':'#2d8653',fontSize:'11px',fontWeight:'700',padding:'1px 7px',borderRadius:'100px'}}>{countFor(g.id)}</span>
+              </button>
+            ))}
+          </div>
+          {activeGroup!=='all'&&(
+            <div style={{marginBottom:'20px',display:'flex',alignItems:'center',gap:'10px'}}>
+              <span style={{fontSize:'14px',color:'#5a7566'}}>Đang xem:</span>
+              <strong style={{color:'#1a5c34',fontSize:'15px'}}>{GROUPS.find(g=>g.id===activeGroup)?.icon} {GROUPS.find(g=>g.id===activeGroup)?.label}</strong>
+              <span style={{background:'#e8f5ed',color:'#2d8653',fontSize:'11px',fontWeight:'700',padding:'2px 8px',borderRadius:'100px'}}>{filtered.length} sản phẩm</span>
+              <button onClick={()=>setActiveGroup('all')} style={{fontSize:'12px',color:'#8aaa96',background:'none',border:'none',cursor:'pointer',textDecoration:'underline'}}>Xem tất cả</button>
+            </div>
+          )}
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(240px,1fr))',gap:'18px'}}>
+            {filtered.map(p=>(
+              <div key={p.id} className="product-card">
+                <div style={{padding:'22px'}}>
+                  <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:'14px'}}>
+                    <div className="product-icon-bg">{p.icon}</div>
+                    <span style={{background:p.tagColor,color:'white',fontSize:'10px',fontWeight:'700',padding:'3px 9px',borderRadius:'100px'}}>{p.tag}</span>
+                  </div>
+                  <div style={{fontSize:'11px',color:'#8aaa96',fontWeight:'500',marginBottom:'3px'}}>{p.subtitle}</div>
+                  <h3 style={{fontFamily:"'Playfair Display',serif",fontSize:'17px',fontWeight:'700',color:'#1a2e22',marginBottom:'12px',lineHeight:'1.3'}}>{p.name}</h3>
+                  <ul style={{listStyle:'none',marginBottom:'16px'}}>
+                    {p.cardFeatures.map((f,i)=>(
+                      <li key={i} style={{fontSize:'13px',color:'#4a6557',padding:'4px 0',display:'flex',gap:'7px'}}>
+                        <span style={{color:'#2d8653',fontWeight:'700',flexShrink:0}}>✓</span>{f}
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={()=>setActiveProduct(p.id)} className="btn-green-outline" style={{width:'100%',justifyContent:'center',padding:'9px 16px',fontSize:'13px'}}>🔍 Xem chi tiết</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BENEFITS */}
+      <section id="sec-benefits" style={{padding:'72px 24px',background:'white'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+          <div style={{textAlign:'center',marginBottom:'48px'}}>
+            <span className="section-label">Lý do lựa chọn</span>
+            <h2 className="section-title">4 Lý Do Doanh Nghiệp Lựa Chọn Giấy LIVI</h2>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:'20px'}}>
+            {benefits.map((b,i)=>(
+              <div key={i} className="benefit-card">
+                <div style={{fontSize:'36px',marginBottom:'16px'}}>{b.icon}</div>
+                <div className="green-divider"></div>
+                <h4 style={{fontFamily:"'Playfair Display',serif",fontSize:'18px',fontWeight:'700',marginBottom:'10px',color:'#1a2e22'}}>{b.title}</h4>
+                <p style={{fontSize:'14px',color:'#4a6557',lineHeight:'1.75'}}>{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CERTS */}
+      <section id="sec-certs" style={{background:'linear-gradient(135deg,#1a5c34,#2d8653)',padding:'52px 24px'}}>
+        <div style={{maxWidth:'1000px',margin:'0 auto',textAlign:'center'}}>
+          <span style={{display:'inline-block',background:'rgba(255,255,255,0.15)',color:'white',fontSize:'11px',fontWeight:'700',letterSpacing:'1.5px',textTransform:'uppercase',padding:'6px 14px',borderRadius:'100px',marginBottom:'12px'}}>Chứng nhận quốc tế</span>
+          <h2 style={{fontFamily:"'Playfair Display',serif",color:'white',fontSize:'clamp(22px,4vw,36px)',fontWeight:'700',marginBottom:'36px'}}>Tiêu chuẩn được kiểm chứng toàn cầu</h2>
+          <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:'14px'}}>
+            {[{cert:'ISO 22000',sub:'An toàn thực phẩm',icon:'🛡️'},{cert:'Hypoallergenic',sub:'Không kích ứng da',icon:'🌿'},{cert:'100% OBA Free',sub:'Không hóa chất tẩy',icon:'🔬'},{cert:'PEFC',sub:'Nguồn gốc bền vững',icon:'🌲'},{cert:'Halal',sub:'Chuẩn Halal quốc tế',icon:'☪️'},{cert:'SVLK',sub:'Gỗ hợp pháp',icon:'📋'}].map((c,i)=>(
+              <div key={i} style={{background:'rgba(255,255,255,0.12)',border:'1px solid rgba(255,255,255,0.2)',borderRadius:'14px',padding:'18px 20px',minWidth:'130px',backdropFilter:'blur(8px)',textAlign:'center'}}>
+                <div style={{fontSize:'26px',marginBottom:'8px'}}>{c.icon}</div>
+                <div style={{color:'white',fontWeight:'700',fontSize:'13px'}}>{c.cert}</div>
+                <div style={{color:'rgba(255,255,255,0.65)',fontSize:'11px',marginTop:'4px'}}>{c.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROOF */}
+      <section id="sec-proof" style={{background:'#f7f9f8',padding:'72px 24px'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+          <div style={{textAlign:'center',marginBottom:'48px'}}>
+            <span className="section-label">Khách hàng thực tế</span>
+            <h2 className="section-title">Các Khách Sạn & Chuỗi Nhà Hàng Đã Tối Ưu Chi Phí</h2>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'22px'}}>
+            {proofs.map((p,i)=>(
+              <div key={i} className="proof-card">
+                <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'14px'}}>
+                  <div style={{fontSize:'34px'}}>{p.icon}</div>
+                  <div>
+                    <div style={{fontSize:'11px',fontWeight:'700',letterSpacing:'1px',color:'#2d8653',textTransform:'uppercase'}}>{p.sector}</div>
+                    <div style={{fontFamily:"'Playfair Display',serif",fontSize:'16px',fontWeight:'700',color:'#1a2e22'}}>{p.title}</div>
+                  </div>
+                </div>
+                <div className="green-divider" style={{width:'32px',height:'3px'}}></div>
+                <p style={{fontSize:'14px',color:'#4a6557',lineHeight:'1.8'}}>{p.desc}</p>
+                <div style={{marginTop:'16px',display:'flex',gap:'6px',flexWrap:'wrap'}}>
+                  {['✓ Đã triển khai','✓ Tối ưu chi phí'].map((t,j)=><span key={j} className="spec-tag">{t}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section id="sec-partners" style={{padding:'72px 24px',background:'white'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+          <div style={{textAlign:'center',marginBottom:'48px'}}>
+            <span className="section-label">Đối tác tin dùng</span>
+            <h2 className="section-title">Thương Hiệu Lớn Đã Lựa Chọn LIVI</h2>
+            <p style={{color:'#5a7566',fontSize:'15px',maxWidth:'520px',margin:'10px auto 0'}}>Hơn 5,000 doanh nghiệp F&B, Khách sạn, Y tế và Tòa nhà đang sử dụng LIVI mỗi ngày</p>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(190px,1fr))',gap:'14px'}}>
+            {partners.map((p,i)=>(
+              <div key={i} className="partner-logo">
+                <div style={{width:'52px',height:'52px',borderRadius:'13px',background:p.color,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'24px'}}>{p.icon}</div>
+                <div style={{textAlign:'center'}}>
+                  <div style={{fontWeight:'700',fontSize:'14px',color:'#1a2e22'}}>{p.name}</div>
+                  <div style={{fontSize:'12px',color:'#8aaa96',marginTop:'2px'}}>{p.sector}</div>
+                  <span style={{display:'inline-block',background:'#e8f5ed',color:'#2d8653',fontSize:'11px',fontWeight:'600',padding:'3px 10px',borderRadius:'100px',marginTop:'6px'}}>{p.tag}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{textAlign:'center',marginTop:'36px'}}>
+            <button className="btn-primary" onClick={()=>openForm('Đăng ký trở thành Đối tác phân phối')}>🤝 Trở thành đối tác phân phối</button>
+          </div>
+        </div>
+      </section>
+
+      {/* POLICY */}
+      <section id="sec-policy" style={{background:'#f7f9f8',padding:'72px 24px'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+          <div style={{textAlign:'center',marginBottom:'48px'}}>
+            <span className="section-label">Chính sách hợp tác</span>
+            <h2 className="section-title">Chính Sách Phân Phối LIVI</h2>
+            <p style={{color:'#5a7566',fontSize:'15px',maxWidth:'560px',margin:'10px auto 0'}}>3 cấp độ hợp tác linh hoạt – phù hợp từ cửa hàng nhỏ đến nhà phân phối quy mô lớn</p>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'22px'}}>
+            {policies.map((pol,i)=>(
+              <div key={i} className="policy-card" style={{background:'white'}}>
+                <div style={{background:pol.headerBg,padding:'26px 22px 22px'}}>
+                  <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'12px'}}>
+                    <span style={{fontFamily:"'Playfair Display',serif",fontSize:'44px',fontWeight:'900',color:pol.isLight?'rgba(45,134,83,0.15)':'rgba(255,255,255,0.15)',lineHeight:'1'}}>{pol.tier}</span>
+                    <span style={{fontSize:'34px'}}>{pol.icon}</span>
+                  </div>
+                  <span style={{display:'inline-block',background:pol.badgeBg,color:pol.badgeColor,fontSize:'11px',fontWeight:'700',padding:'4px 12px',borderRadius:'100px',marginBottom:'8px'}}>{pol.badge}</span>
+                  <h3 style={{fontFamily:"'Playfair Display',serif",fontSize:'19px',fontWeight:'700',color:pol.isLight?'#1a2e22':'white',lineHeight:'1.25'}}>{pol.level}</h3>
+                  <p style={{fontSize:'12px',fontWeight:'600',color:pol.isLight?'#5a7566':'rgba(255,255,255,0.7)',marginTop:'3px'}}>{pol.sublabel}</p>
+                </div>
+                <div style={{display:'flex',borderBottom:'1px solid #f0f5f2'}}>
+                  {[[pol.minOrder,'Đơn tối thiểu'],[pol.discount,'Chiết khấu'],[pol.delivery,'Vận chuyển']].map(([val,lbl],j)=>(
+                    <div key={j} style={{flex:1,padding:'12px 6px',textAlign:'center',borderRight:j<2?'1px solid #f0f5f2':'none'}}>
+                      <div style={{fontSize:'11px',fontWeight:'700',color:'#1a5c34',lineHeight:'1.3'}}>{val}</div>
+                      <div style={{fontSize:'10px',color:'#9ab8a8',marginTop:'3px'}}>{lbl}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{padding:'18px 22px'}}>
+                  <div style={{fontSize:'11px',fontWeight:'700',letterSpacing:'1.2px',color:'#9ab8a8',textTransform:'uppercase',marginBottom:'10px'}}>Quyền lợi bao gồm</div>
+                  <ul style={{listStyle:'none'}}>
+                    {pol.perks.map((perk,j)=>(
+                      <li key={j} style={{display:'flex',gap:'8px',padding:'5px 0',borderBottom:j<pol.perks.length-1?'1px dashed #f0f5f2':'none'}}>
+                        <span style={{color:'#2d8653',fontWeight:'700',flexShrink:0}}>✓</span>
+                        <span style={{fontSize:'13px',color:'#4a6557',lineHeight:'1.5'}}>{perk}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {i===1&&<AffiliateBar/>}
+                  <button onClick={()=>openForm(pol.cta)} className="btn-primary" style={{width:'100%',justifyContent:'center',marginTop:'18px',fontSize:'14px',padding:'12px'}}>
+                    {pol.cta} →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OFFER + INLINE FORM */}
+      <section style={{padding:'72px 24px',background:'white'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto'}}>
+          <div style={{textAlign:'center',marginBottom:'44px'}}>
+            <span className="section-label">Ưu đãi & Hợp tác</span>
+            <h2 className="section-title">Chương Trình Dành Cho Đối Tác B2B</h2>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'28px',alignItems:'start'}}>
+            <div style={{background:'linear-gradient(135deg,#e8f5ed,#f0f9f3)',borderRadius:'22px',padding:'32px',border:'1.5px solid #c8e4d3',boxShadow:'0 4px 24px rgba(26,92,52,0.08)'}}>
+              <span className="section-label">Ưu đãi độc quyền</span>
+              <h3 style={{fontFamily:"'Playfair Display',serif",fontSize:'21px',fontWeight:'700',color:'#1a2e22',marginBottom:'8px'}}>Đăng ký nhận mã giảm giá & Báo giá sỉ</h3>
+              <p style={{fontSize:'14px',color:'#5a7566',marginBottom:'22px'}}>Dành riêng cho F&B, Khách sạn, Tòa nhà. Nhận ngay ưu đãi sỉ tốt nhất.</p>
+              {!inlineDone?(
+                <div style={{display:'flex',flexDirection:'column',gap:'11px'}}>
+                  <input className="form-input" placeholder="Họ tên / Tên doanh nghiệp *" value={inlineForm.name} onChange={e=>setInlineForm({...inlineForm,name:e.target.value})}/>
+                  <input className="form-input" placeholder="Email liên hệ *" type="email" value={inlineForm.email} onChange={e=>setInlineForm({...inlineForm,email:e.target.value})}/>
+                  <input className="form-input" placeholder="Số Zalo / Điện thoại *" value={inlineForm.zalo} onChange={e=>setInlineForm({...inlineForm,zalo:e.target.value})}/>
+                  <button onClick={()=>inlineValid&&setInlineDone(true)} disabled={!inlineValid} className="btn-primary"
+                    style={{justifyContent:'center',marginTop:'6px',fontSize:'15px',padding:'14px',opacity:inlineValid?1:0.45,cursor:inlineValid?'pointer':'not-allowed',transform:'none'}}>
+                    🎁 {inlineValid?'Nhận mã giảm giá ngay':'Vui lòng điền đầy đủ thông tin'}
+                  </button>
+                  <p style={{fontSize:'11px',color:'#8aaa96',textAlign:'center'}}>Không spam – chỉ dùng để tư vấn</p>
+                </div>
+              ):(
+                <div style={{textAlign:'center',padding:'22px',background:'white',borderRadius:'14px'}}>
+                  <div style={{fontSize:'44px',marginBottom:'10px'}}>🎉</div>
+                  <h4 style={{fontFamily:"'Playfair Display',serif",fontSize:'19px',fontWeight:'700',color:'#1a5c34',marginBottom:'8px'}}>Đăng ký thành công!</h4>
+                  <p style={{fontSize:'14px',color:'#5a7566'}}>Chúng tôi sẽ liên hệ qua Zalo trong 2 giờ làm việc.</p>
+                </div>
+              )}
+            </div>
+            <div style={{display:'flex',flexDirection:'column',gap:'14px'}}>
+              {[
+                {bg:'linear-gradient(135deg,#1a5c34,#2d8653)',icon:'🎁',title:'Mã giảm giá & Báo giá sỉ',desc:'Dành cho F&B, Khách sạn. Chiết khấu theo số lượng, giao hàng toàn quốc.',cta:'Lấy mã giảm giá'},
+                {bg:'linear-gradient(135deg,#0f3d22,#1a5c34)',icon:'🤝',title:'Đăng ký Đại lý / Affiliate',desc:'Phân phối hàng B2B chiết khấu hấp dẫn. Hỗ trợ tư vấn và marketing.',cta:'Đăng ký Đại lý'},
+                {bg:'linear-gradient(135deg,#2d8653,#4caf78)',icon:'📦',title:'Tài trợ thiết bị Dispenser',desc:'Tư vấn hệ thống Dispenser ABS cao cấp miễn phí cho dự án lớn.',cta:'Nhận tư vấn dự án'},
+              ].map((card,i)=>(
+                <div key={i} className="offer-card" style={{background:card.bg}}>
+                  <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'10px'}}>
+                    <span style={{fontSize:'28px'}}>{card.icon}</span>
+                    <h4 style={{fontFamily:"'Playfair Display',serif",color:'white',fontSize:'17px',fontWeight:'700'}}>{card.title}</h4>
+                  </div>
+                  <p style={{color:'rgba(255,255,255,0.8)',fontSize:'13px',marginBottom:'14px',lineHeight:'1.6'}}>{card.desc}</p>
+                  <button onClick={()=>openForm(card.cta)} style={{display:'inline-flex',alignItems:'center',gap:'6px',background:'rgba(255,255,255,0.2)',color:'white',border:'1px solid rgba(255,255,255,0.3)',borderRadius:'100px',padding:'8px 16px',fontSize:'13px',fontWeight:'600',cursor:'pointer',fontFamily:"'DM Sans',sans-serif"}}>
+                    {card.cta} →
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER CTA */}
+      <section style={{background:'#f7f9f8',padding:'60px 24px',textAlign:'center'}}>
+        <div style={{maxWidth:'680px',margin:'0 auto'}}>
+          <span className="section-label">Liên hệ ngay</span>
+          <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:'clamp(20px,4vw,34px)',fontWeight:'700',color:'#1a2e22',marginBottom:'10px'}}>Bạn cần tư vấn giải pháp giấy LIVI cho cơ sở kinh doanh?</h2>
+          <p style={{fontSize:'15px',color:'#5a7566',marginBottom:'32px'}}>Đội ngũ chuyên gia sẵn sàng tư vấn miễn phí và gửi báo giá trong 24 giờ.</p>
+          <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:'10px'}}>
+            <a href={CTA.shopee} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{fontSize:'14px',background:'linear-gradient(135deg,#f05a28,#d94f22)'}}>🛍️ Gian hàng LIVI (Shopee)</a>
+            <a href={CTA.lazada} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{fontSize:'14px',background:'linear-gradient(135deg,#f36f2c,#e55a1b)'}}>🛒 Gian hàng LIVI (Lazada)</a>
+            <a href={CTA.zalo} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{fontSize:'14px',background:'linear-gradient(135deg,#0da8f5,#0083c6)'}}>💬 Nhắn tin Zalo tư vấn</a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={{background:'#1a2e22',padding:'36px 24px'}}>
+        <div style={{maxWidth:'1100px',margin:'0 auto',display:'flex',flexWrap:'wrap',alignItems:'center',justifyContent:'space-between',gap:'18px'}}>
+          <div style={{display:'flex',alignItems:'center',gap:'12px'}}>
+            <div style={{background:'linear-gradient(135deg,#2d8653,#4caf78)',borderRadius:'10px',width:'42px',height:'42px',display:'flex',alignItems:'center',justifyContent:'center',color:'white',fontWeight:'900',fontFamily:"'Playfair Display',serif",fontSize:'19px'}}>L</div>
+            <div>
+              <div style={{fontFamily:"'Playfair Display',serif",fontWeight:'700',fontSize:'19px',color:'white'}}>LIVI</div>
+              <div style={{fontSize:'11px',color:'rgba(255,255,255,0.5)'}}>Premium Tissue Solutions</div>
+            </div>
+          </div>
+          <div style={{textAlign:'center',color:'rgba(255,255,255,0.7)',fontSize:'13px',lineHeight:'1.7'}}>
+            Sản xuất từ <strong style={{color:'#4caf78'}}>100% Bột giấy nguyên sinh</strong><br/>
+            Phân phối chính thức bởi <strong style={{color:'#a8dbb8'}}>Grand Universal Trading Vietnam</strong>
+          </div>
+          <div style={{display:'flex',gap:'8px',flexWrap:'wrap'}}>
+            <div style={{background:'rgba(76,175,120,0.2)',border:'1px solid rgba(76,175,120,0.4)',borderRadius:'8px',padding:'5px 11px',color:'#4caf78',fontSize:'12px',fontWeight:'700'}}>🌱 Go Green</div>
+            <div style={{background:'rgba(76,175,120,0.2)',border:'1px solid rgba(76,175,120,0.4)',borderRadius:'8px',padding:'5px 11px',color:'#4caf78',fontSize:'12px',fontWeight:'700'}}>♻️ Zero Deforestation</div>
+          </div>
+        </div>
+        <div style={{maxWidth:'1100px',margin:'16px auto 0',paddingTop:'16px',borderTop:'1px solid rgba(255,255,255,0.08)',display:'flex',flexWrap:'wrap',justifyContent:'space-between',alignItems:'center',gap:'8px'}}>
+          <span style={{color:'rgba(255,255,255,0.35)',fontSize:'12px'}}>© 2025 LIVI – Grand Universal Trading Vietnam. All rights reserved.</span>
+          <span style={{background:'rgba(76,175,120,0.15)',border:'1px solid rgba(76,175,120,0.3)',color:'#4caf78',fontSize:'11px',fontWeight:'700',padding:'4px 10px',borderRadius:'6px'}}>{VERSION}</span>
+        </div>
+      </footer>
+
+      {activeProduct&&<ProductModal product={selectedProduct} onClose={()=>setActiveProduct(null)} openForm={openForm}/>}
+      {formModal!==null&&<FormModal title={formModal} onClose={closeForm}/>}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
