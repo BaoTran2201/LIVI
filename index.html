@@ -15,8 +15,11 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;}
 html{scroll-behavior:smooth;}
 .navbar-glass{background:rgba(255,255,255,0.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(45,134,83,0.12);box-shadow:0 2px 24px rgba(26,92,52,0.07);}
 .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:500;color:white;backdrop-filter:blur(4px);}
-.product-card{background:white;border-radius:20px;border:1.5px solid #e2ede7;transition:all 0.3s ease;overflow:hidden;box-shadow:0 4px 20px rgba(26,92,52,0.06);}
+.product-card{background:white;border-radius:20px;border:1.5px solid #e2ede7;transition:all 0.3s ease;overflow:hidden;box-shadow:0 4px 20px rgba(26,92,52,0.06);display:flex;flex-direction:column;height:100%;}
 .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(26,92,52,0.15);border-color:var(--gl);}
+.product-image{height:170px;overflow:hidden;border-radius:18px 18px 0 0;background:#f0f7f3;display:flex;align-items:center;justify-content:center;}
+.product-content{padding:22px;display:flex;flex-direction:column;flex:1;}
+.product-button{margin-top:auto;}
 .benefit-card{background:white;border-radius:16px;border:1px solid #e2ede7;padding:28px;transition:all 0.3s ease;}
 .benefit-card:hover{box-shadow:0 8px 32px rgba(26,92,52,0.1);transform:translateY(-3px);}
 .offer-card{border-radius:20px;padding:28px;transition:all 0.3s ease;position:relative;overflow:hidden;}
@@ -600,13 +603,13 @@ function App(){
               <button onClick={()=>setActiveGroup('all')} style={{fontSize:'12px',color:'#8aaa96',background:'none',border:'none',cursor:'pointer',textDecoration:'underline'}}>Xem tất cả</button>
             </div>
           )}
-          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(240px,1fr))',gap:'18px'}}>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(240px,1fr))',gap:'18px',alignItems:'stretch'}}>
             {filtered.map(p=>(
               <div key={p.id} className="product-card">
-                {p.image&&<div style={{height:'170px',overflow:'hidden',borderRadius:'18px 18px 0 0',background:'#f0f7f3',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                {p.image&&<div className="product-image">
                   <img src={p.image} alt={p.name} style={{width:'100%',height:'100%',objectFit:'contain',padding:'10px'}}/>
                 </div>}
-                <div style={{padding:'22px'}}>
+                <div className="product-content">
                   <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:'14px'}}>
                     <div className="product-icon-bg">{p.icon}</div>
                     <span style={{background:p.tagColor,color:'white',fontSize:'10px',fontWeight:'700',padding:'3px 9px',borderRadius:'100px'}}>{p.tag}</span>
@@ -620,8 +623,8 @@ function App(){
                       </li>
                     ))}
                   </ul>
-                  <button onClick={()=>setActiveProduct(p.id)} className="btn-green-outline" style={{width:'100%',justifyContent:'center',padding:'9px 16px',fontSize:'13px'}}>🔍 Xem chi tiết</button>
                 </div>
+                <button onClick={()=>setActiveProduct(p.id)} className="btn-green-outline product-button" style={{width:'calc(100% - 44px)',justifyContent:'center',padding:'9px 16px',fontSize:'13px',marginLeft:'22px',marginRight:'22px',marginBottom:'22px'}}>🔍 Xem chi tiết</button>
               </div>
             ))}
           </div>
